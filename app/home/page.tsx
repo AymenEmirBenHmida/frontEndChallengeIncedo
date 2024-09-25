@@ -1,9 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Button, Card, Label, TextInput } from "flowbite-react";
+import DownloadCSVButton from "../../components/DownloadCSVButton";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [fileName, setFileName] = useState("");
+  const [artistName, setArtistName] = useState("");
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
   return (
     <div>
@@ -14,16 +17,29 @@ export default function Home() {
               <div className="mb-2 block">
                 <Label htmlFor="name" value="artist name" />
               </div>
-              <TextInput id="name" type="text" />
+              <TextInput
+                id="name"
+                type="text"
+                onChange={(e) => {
+                  setArtistName(e.target.value);
+                }}
+              />
             </div>
             <div>
               <div className="mb-2 block">
                 <Label htmlFor="fileName" value="file name" />
               </div>
-              <TextInput id="fineName" type="text" required />
+              <TextInput
+                id="fileName"
+                type="text"
+                required
+                onChange={(e) => {
+                  setFileName(e.target.value);
+                }}
+              />
             </div>
             <div>
-              <Button color="blue">submit</Button>
+              <DownloadCSVButton artistName={artistName} fileName={fileName} />
             </div>
           </form>
         </Card>
