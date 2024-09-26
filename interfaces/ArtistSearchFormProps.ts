@@ -14,4 +14,5 @@ export default interface ArtistSearchFormProps {
   setLoadingDownload: Dispatch<SetStateAction<boolean>>;
   handleSearch: () => Promise<void>;
   validateDownload: () => true | undefined;
+  openSnackbar: (message: string, success: boolean) => void;
 }

@@ -13,6 +13,7 @@ const ArtistSearchForm: React.FC<ArtistSearchFormProps> = ({
   loadingDownload,
   setLoadingDownload,
   validateDownload,
+  openSnackbar,
 }) => {
   return (
     <div className="flex justify-between items-center mb-5">
@@ -72,6 +73,7 @@ const ArtistSearchForm: React.FC<ArtistSearchFormProps> = ({
         </form>
       </Card>
       <DownloadCSVButton
+        openSnackbar={openSnackbar}
         setLoadingDownload={setLoadingDownload}
         loadingDownload={loadingDownload}
         validateDownload={validateDownload}

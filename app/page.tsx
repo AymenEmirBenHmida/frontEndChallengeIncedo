@@ -35,7 +35,6 @@ export default function Home() {
     setSnackbarMessage(message);
     setSnackbarSuccess(success);
     setShowToast(true);
-
     //auto-hide after 6 seconds
     setTimeout(() => {
       setShowToast(false);
@@ -105,6 +104,7 @@ export default function Home() {
   return (
     <div>
       <ArtistSearchForm
+        openSnackbar={openSnackbar}
         artistName={artistName}
         fileName={fileName}
         setArtistName={setArtistName}

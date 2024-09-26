@@ -6,4 +6,5 @@ export default interface DownloadCSVButtonProps {
   validateDownload: () => true | undefined;
   loadingDownload: boolean;
   setLoadingDownload: Dispatch<SetStateAction<boolean>>;
+  openSnackbar: (message: string, success: boolean) => void;
 }

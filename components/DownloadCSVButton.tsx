@@ -9,6 +9,7 @@ const DownloadCSVButton: React.FC<DownloadCSVButtonProps> = ({
   validateDownload,
   loadingDownload,
   setLoadingDownload,
+  openSnackbar,
 }) => {
   //handle downloading file
   const handleDownload = async (name: string, fileName: string) => {
@@ -21,23 +22,22 @@ const DownloadCSVButton: React.FC<DownloadCSVButtonProps> = ({
         const url = window.URL.createObjectURL(
           new Blob([csvData], { type: "text/csv" })
         );
-
         // Create a link element
         const link = document.createElement("a");
         link.href = url;
         link.setAttribute("download", `${fileName}.csv`);
-
         // Append to the body and click to trigger download
         document.body.appendChild(link);
         link.click();
-
         // Clean up
         link.parentNode?.removeChild(link);
         window.URL.revokeObjectURL(url);
         setLoadingDownload(false);
+        openSnackbar("Successful download", true);
       }
     } catch (error) {
       setLoadingDownload(false);
+      openSnackbar("There was an error", false);
       console.error("Error downloading csv:", error);
     }
   };
