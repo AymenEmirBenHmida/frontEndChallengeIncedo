@@ -1,9 +1,9 @@
 import axiosInstance from "../../axiosConfig";
 
-export const searchArtists = async (fileName: string, name?: string) => {
+export const searchArtists = async (name?: string) => {
   try {
     const response = await axiosInstance.get("/artist/search", {
-      params: { name, fileName },
+      params: { name },
     });
     return response.data;
   } catch (error: any) {

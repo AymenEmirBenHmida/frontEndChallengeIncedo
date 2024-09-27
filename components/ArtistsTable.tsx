@@ -47,7 +47,10 @@ const ArtistTable: React.FC<ArtistTableProps> = ({ artists, loading }) => {
                   </Table.Row>
                 ))
               : paginatedData.map((artist, index) => {
-                  const key = artist.mbid ? artist.mbid : `artist-${index}`;
+                  //combine mbid and name for a unique key
+                  const key = artist.mbid
+                    ? `${artist.mbid}-${artist.name}`
+                    : `artist-${index}`;
                   return (
                     <Table.Row
                       key={key}

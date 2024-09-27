@@ -89,7 +89,7 @@ export default function Home() {
       if (await validateSearch()) {
         setArtists([]);
         setLoadingSearch(true);
-        const response = await searchArtists(fileName, artistName);
+        const response = await searchArtists( artistName);
         setArtists(response.data);
         openSnackbar("Successful search", true);
         setLoadingSearch(false);
